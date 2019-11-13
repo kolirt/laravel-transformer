@@ -14,6 +14,14 @@ if (!function_exists('transformer')) {
 
                 return $item;
             });
+        } else if ($data instanceof \Illuminate\Pagination\LengthAwarePaginator) {
+            $data->getCollection()->transform(function ($item, $key) use ($method) {
+                if ($item instanceof \Illuminate\Database\Eloquent\Model) {
+                    return getTransformerClass($item, $method);
+                }
+                return $item;
+            });
+            $result = $data;
         } else if (is_array($data)) {
             $result = array_map(function ($item) use ($method) {
                 if ($item instanceof \Illuminate\Database\Eloquent\Model) {
