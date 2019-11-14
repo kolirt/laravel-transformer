@@ -5,7 +5,7 @@ if (!function_exists('transformer')) {
     {
         $result = null;
         if ($data instanceof \Illuminate\Database\Eloquent\Model) {
-            $data = getTransformerClass($data, $method);
+            $result = getTransformerClass($data, $method);
         } else if ($data instanceof \Illuminate\Support\Collection) {
             $result = $data->map(function ($item) use ($method) {
                 if ($item instanceof \Illuminate\Database\Eloquent\Model) {
