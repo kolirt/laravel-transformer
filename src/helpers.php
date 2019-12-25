@@ -21,7 +21,7 @@ if (!function_exists('transformer')) {
                 }
                 return $item;
             });
-            $result = $data;
+            $result = getTransformerClass($data, $method);
         } else if (is_array($data)) {
             $result = array_map(function ($item) use ($method) {
                 if ($item instanceof \Illuminate\Database\Eloquent\Model) {
@@ -48,4 +48,3 @@ if (!function_exists('getTransformerClass')) {
         return $model;
     }
 }
-    
