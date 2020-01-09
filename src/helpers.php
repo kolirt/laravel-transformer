@@ -1,7 +1,7 @@
 <?php
 
 if (!function_exists('transformer')) {
-    function transformer($data, $method = 'main')
+    function transformer($data, $method = 'main', $second_method = 'main')
     {
         $result = null;
         if ($data instanceof \Illuminate\Database\Eloquent\Model) {
@@ -15,9 +15,9 @@ if (!function_exists('transformer')) {
                 return $item;
             });
         } else if ($data instanceof \Illuminate\Pagination\LengthAwarePaginator) {
-            $data->getCollection()->transform(function ($item, $key) use ($method) {
+            $data->getCollection()->transform(function ($item, $key) use ($second_method) {
                 if ($item instanceof \Illuminate\Database\Eloquent\Model) {
-                    return getTransformerClass($item, $method);
+                    return getTransformerClass($item, $second_method);
                 }
                 return $item;
             });
