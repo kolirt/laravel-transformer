@@ -1,0 +1,31 @@
+{
+  "name": "kolirt/laravel-transformer",
+  "description": "Laravel transformer",
+  "keywords": [
+    "laravel",
+    "transformer"
+  ],
+  "license": "MIT",
+  "version": "2.0.3",
+  "authors": [
+    {
+      "name": "kolirt"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "files": [
+      "src/helpers.php"
+    ],
+    "psr-4": {
+      "Kolirt\\Transformer\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Kolirt\\Transformer\\ServiceProvider"
+      ]
+    }
+  }
+}
